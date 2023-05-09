@@ -12,7 +12,12 @@
 # 4974 --> 7974
 
 def max_division_by_3(num):
-    # Здесь нужно написать код
+    new_num = 0
+    for i in range(len(str(num))):
+        for j in range(9, 0, -1):
+            new = str(num)[:i] + str(j) + str(num)[i + 1:]
+            if j != str(num)[i] and int(new) % 3 == 0:
+                new_num = max(new_num, int(new))
     return new_num
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
