@@ -5,8 +5,7 @@
 def move_zeros(lst):
     for i in lst:
         if i == 0:
-            lst.remove(i)
-            lst.append(i)
+            lst.append(lst.pop(lst.index(i)))
     return lst
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
