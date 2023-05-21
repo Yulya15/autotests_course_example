@@ -26,19 +26,14 @@ def everything_for_your_cat(cats_data):
     :return: преобразованная строка, которая содержит структурированные данные по владельцам и их котикам
     """
     our_str = ''
-    # Словарь, в котором ключ - Имя и Фамилия, значение - кличка котика и возраст
     owner_data = {}
     for item in cats_data:
-        # Ключ (имя и фамилия)
         owner = f'{item[2]} {item[3]}'
-        # Значение (кличка котика и возраст)
         cat = f'{item[0]}, {item[1]}'
-        # Если ключа еще нет в словаре, добавляем новый со значением
-        if owner not in owner_data:
-            owner_data.update({owner: cat})
-        # Если ключ есть, добавляем котика
+        if owner in owner_data:
+            owner_data[owner] += f'; {cat}'
         else:
-            owner_data.update({owner: owner_data[owner] + '; ' + cat})
+            owner_data[owner] = cat
     for owner in owner_data:
         our_str += f'{owner}: {owner_data[owner]}\n'
     return our_str

@@ -14,9 +14,7 @@ def repeats(our_str):
     """
     new_str = ''
     for i in our_str:
-        # Формируем строку, к каждому символу добавляем _n,
-        # где n определяется по количеству вхождений символа
-        new_str += i + '_' + str(new_str.count(i) + 1)
+        new_str += f'{i}_{str(new_str.count(i) + 1)}'
     return new_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
