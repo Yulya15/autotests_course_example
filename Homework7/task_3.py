@@ -26,7 +26,7 @@
 # Здесь пишем код
 class PublicTransport:
     """
-    Класс PublicTransport используется для вывода на печать информации о транспорте
+    Класс PublicTransport описывает марку, цвет, год выпуска и мощность двигателя
     """
     def __init__(self, brand, engine_power, year, color, max_speed):
         """
@@ -46,13 +46,10 @@ class PublicTransport:
     @property
     def info(self):
         """
-        Свойство, которое выводит на печать информацию о транспорте
+        Вывод на печать информации о транспорте
         :return: печать марки, цвета, года выпуска и мощности двигателя
         """
-        return print(f'Марка: {self.brand}/n '
-                     f'Цвет: {self.color}/n'
-                     f'Год выпуска: {self.year}/n'
-                     f'Мощность двигателя: {self._engine_power}')
+        return f'Марка: {self.brand}, Цвет: {self.color}, Год выпуска: {self.year}, Мощность двигателя: {self._engine_power}'
 
 
 class Bus(PublicTransport):
@@ -76,7 +73,7 @@ class Bus(PublicTransport):
     @property
     def park(self):
         """
-        Свойство, которое возвращает значение атрибута park
+        Возвращение значения атрибута park
         :return: значение park
         """
         return self.__park
@@ -84,10 +81,11 @@ class Bus(PublicTransport):
     @park.setter
     def park(self, park):
         """
-        Свойство, которое присваивает номер парку и проверяет, что он в диапазоне от 1000 до 9999
+        Присваивание номера парку и проверка, что он в диапазоне от 1000 до 9999
         :param park: номер парка
         """
-        assert 1000 <= park <= 9999
+        assert 1000 <= park <= 9999, 'Проверка на ограничение диапазона не пройдена. ' \
+                                     'Номер парка должен быть в диапазоне от 1000 до 9999'
         self.__park = park
 
 
@@ -112,7 +110,7 @@ class Tram(PublicTransport):
     @property
     def how_long(self):
         """
-        Свойство, которое вычисляет время прохождение маршрута по формуле max_speed/(4*path)
+        Вычисление времени прохождения маршрута по формуле max_speed/(4*path)
         :return: время прохождение маршрута
         """
         return self.max_speed / (4 * self.path)

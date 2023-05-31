@@ -24,10 +24,7 @@
 # Здесь пишем код
 class PersonInfo:
     """
-    Класс PersonInfo:
-    1. Используется для преобразования строки "Имя Фамилия" в "Фамилия И."
-    2. Возвращает путь от головного подразделения до конечного с разделителем "-->"
-    3. Вычисляет зарплату сотрудников после индексации
+    Класс PersonInfo описывает сотрудника: Имя, Фамилию, Возраст, Путь от головного подразделения до того, где работает сотрудник
     """
     def __init__(self, name, age, *deps):
         """
@@ -42,7 +39,7 @@ class PersonInfo:
 
     def short_name(self):
         """
-        Метод преобразует строку "Имя Фамилия" в "Фамилия И."
+        Преобразование строки "Имя Фамилия" в "Фамилия И."
         :return: "Фамилия И."
         """
         str_name = f'{self.name[1]} {self.name[0][0]}.'
@@ -50,27 +47,21 @@ class PersonInfo:
 
     def path_deps(self):
         """
-        Метод преобразует путь от головного подразделения до того, где работает сотрудник, добавляя разделитель "-->"
+        Преобразование пути от головного подразделения до того, где работает сотрудник с разделителем "-->"
         :return: путь "Головное подразделение --> ... --> Конечное подразделение"
         """
         return ' --> '.join(self.deps)
 
     def new_salary(self):
         """
-        Метод вычисляет зарплату после индексации
+        Вычисление зарплаты после индексации
         :return: новая зарплата
         """
-        char_dict = {}
-        char_list = []
         str_deps = ''.join(self.deps)
-        for char in str_deps:
-            char_dict[char] = str_deps.count(char)
-        for val in char_dict.values():
-            char_list.append(val)
-        char_list.sort(reverse=True)
+        char_dict = {char: str_deps.count(char) for char in str_deps}
+        char_list = sorted(char_dict.values(), reverse=True)
         new_salary = 1337 * self.age * (char_list[0] + char_list[1] + char_list[2])
         return new_salary
-
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
