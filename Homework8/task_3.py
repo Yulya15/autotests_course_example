@@ -9,15 +9,13 @@
 
 def segment(point1, point2):
     """
-    Принимается и проверяется корректность двух кортежей с координатами точек (x1, y1), (x2, y2)
+    Суммирование переданных координат двух точек
     :param point1: кортеж с координатами первой точки
     :param point2: кортеж с координатами второй точки
     :return: сумма координат или текст исключения задом наперед
     """
-    x1, y1 = point1
-    x2, y2 = point2
     try:
-        return x1 + y1 + x2 + y2
+        return point1[0] + point2[0] + point1[1] + point2[1]
     except TypeError as error:
         return str(error)[::-1]
 

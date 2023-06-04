@@ -19,18 +19,19 @@ import unittest  # Не удалять
 
 def treatment_sum(our_tuple):
     """
-    Принимается на вход кортеж и обрабатывается с помощью конструкций try/except
+    Сложение элементов кортежа
     :param our_tuple: кортеж
-    :return: результат обработки кортежа с помощью конструкции try/except
+    :return: результат сложения элементов кортежа или исключение
     """
     try:
-        if len(our_tuple) > 2:
-            raise Exception('Много данных')
-        return our_tuple[0] + our_tuple[1]
+        result = our_tuple[0] + our_tuple[1]
     except TypeError:
-        return 'Нельзя сложить эти данные'
+        result = 'Нельзя сложить эти данные'
     except IndexError:
-        return 'Недостаточно данных'
+        result = 'Недостаточно данных'
+    if len(our_tuple) > 2:
+        raise Exception('Много данных')
+    return result
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

@@ -18,21 +18,18 @@ import unittest  # Не удалять
 
 class Trigon:
     """
-    Класс Trigon описывает строны треугольника
+    Проверка на соответствие переданных данных сторонам треугольника
     """
     def __init__(self, *args):
-        """
-        Проверка на корректность переданных данных сторон треугольника
-        :param args: стороны треугольника
-        """
         self.args = args
         if len(args) != 3:
             raise IndexError(f'Передано {len(args)} аргументов, а ожидается 3')
-        elif not (isinstance(args[0], int)) or not (isinstance(args[1], int)) or not (isinstance(args[2], int)):
-            raise TypeError('Стороны должны быть числами')
-        elif args[0] <= 0 or args[1] <= 0 or args[2] <= 0:
+        for item in args:
+            if isinstance(item, str):
+                raise TypeError('Стороны должны быть числами')
+        if args[0] <= 0 or args[1] <= 0 or args[2] <= 0:
             raise ValueError('Стороны должны быть положительными')
-        elif args[0] >= args[1] + args[2] or args[1] >= args[0] + args[2] or args[2] >= args[1] + args[0]:
+        if args[0] + args[1] <= args[2] or args[1] + args[2] <= args[0] or args[0] + args[2] <= args[1]:
             raise Exception("Не треугольник")
 
 
