@@ -3,10 +3,10 @@
 # Необходимо удалить все цифры и записать получившийся текст в файл test_file/task1_answer.txt
 
 
-with open("test_file/task1_data.txt", 'r', encoding='utf-8') as file_1, \
-        open("test_file/task1_answer.txt", 'w', encoding='utf-8') as file_2:
-    for line in file_1.readlines():
-        file_2.write(''.join([symbol for symbol in line if not symbol.isdigit()]))
+with open("test_file/task1_data.txt", 'r', encoding='utf-8') as file_1:
+    with open("test_file/task1_answer.txt", 'w', encoding='utf-8') as file_2:
+        for line in file_1.readlines():
+            file_2.write(''.join([symbol for symbol in line if not symbol.isdigit()]))
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
