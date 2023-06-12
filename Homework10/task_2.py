@@ -19,23 +19,25 @@ def all_division(*arg1):
 
 @pytest.mark.smoke
 def test_positive_1():
-    assert all_division(30, 5, 2) == 3
+    assert all_division(30, 5, 2) == 3, 'Неверный результат деления трех целых чисел'
 
 
 def test_positive_2():
-    assert all_division(80.5, 5) == 16.1
+    assert all_division(80.5, 5) == 16.1, 'Неверный результат деления числа с плавающей точкой на целое число'
 
 
 def test_positive_3():
-    assert all_division(-30, 6) == -5
+    assert all_division(-30, 6) == -5, 'Неверный результат деления отрицательного числа на положительное'
 
 
 @pytest.mark.zero
 def test_div_zero():
-    assert all_division(10, 0), 'Нельзя делить на 0!'
+    with pytest.raises(ZeroDivisionError):
+        all_division(10, 0)
 
 
 @pytest.mark.smoke
 def test_not_digit():
-    assert all_division('1', 0), 'Введите числа!'
+    with pytest.raises(TypeError):
+        all_division('1', 0)
 
