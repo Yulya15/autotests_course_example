@@ -15,8 +15,8 @@ def all_division(*arg1):
 @pytest.mark.parametrize("test_input, expected", [pytest.param((30, 5, 2), 3, marks=pytest.mark.smoke('smoke')),
                                                   pytest.param((80.5, 5), 16.1, marks=pytest.mark.skip('skipped')),
                                                   ((-30, 6), -5),
-                                                  ((99, 0), None),
-                                                  (('1', 0), None)])
+                                                  ((99, 0), ZeroDivisionError),
+                                                  (('1', 0), TypeError)])
 def test_divisios(test_input, expected):
     try:
         assert all_division(*test_input) == expected
