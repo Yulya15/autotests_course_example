@@ -36,7 +36,7 @@ try:
     assert accordion_contacts.is_displayed(), 'Пункт "Контакты" в аккордеоне не отображается'
     accordion_contacts.click()
     sleep(2)
-    submenu_contacts = browser.find_element(By.CSS_SELECTOR, '.NavigationPanels-SubMenu__headTitle.NavigationPanels-SubMenu__title-with-separator.NavigationPanels-Accordion__prevent-default')
+    submenu_contacts = browser.find_element(By.CSS_SELECTOR, '.NavigationPanels-SubMenu__headTitle')
     assert submenu_contacts.is_displayed(), 'Пункт "Контакты" в подменю не отображается'
     submenu_contacts.click()
     sleep(2)
@@ -48,7 +48,7 @@ try:
     sleep(2)
     addressee_window = browser.find_element(By.CSS_SELECTOR, '.controls-Popup.ws-float-area-show-complete')
     assert addressee_window.is_displayed(), "Окно добавления адресата не открылось"
-    search = browser.find_element(By.CSS_SELECTOR, '.controls-Field.js-controls-Field[name="ws-input_2023-06-13"]')
+    search = browser.find_element(By.CSS_SELECTOR, '.controls-Search__nativeField_caretEmpty')
     assert search.is_displayed(), "Поисковая строка не отображается"
     search.send_keys('Ясникова', Keys.ENTER)
     sleep(2)

@@ -21,7 +21,7 @@ try:
     sleep(1)
 
     # Переход в раздел "Контакты"
-    contacts = browser.find_element(By.CSS_SELECTOR, '.sbisru-Header__menu-link[href="/contacts"]')
+    contacts = browser.find_element(By.CSS_SELECTOR, '[href="/contacts"]')
     assert contacts.text == 'Контакты', 'Неверный текст элемента "Контакты"'
     assert contacts.is_displayed(), 'Элемент "Контакты" не отображается'
     contacts.click()
@@ -37,7 +37,7 @@ try:
     assert browser.current_url == tensor_site, 'Неверная ссылка на сайта Тензора'
 
     # Проверка наличия блока "Сила в людях"
-    power_people = browser.find_element(By.CSS_SELECTOR, '.tensor_ru-Index__block4-content.tensor_ru-Index__card')
+    power_people = browser.find_element(By.CSS_SELECTOR, '.tensor_ru-Index__block4-content')
     assert power_people.is_displayed(), 'Блок "Сила в людях" не отображается'
     power_people.location_once_scrolled_into_view
     sleep(2)
